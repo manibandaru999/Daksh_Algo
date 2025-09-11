@@ -17,3 +17,38 @@ body {
 footer {
   margin-top: 40px;
 }
+
+/* hero sections */
+.hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 6rem 0;
+}
+
+.hero-home {
+  background-image: url('https://images.unsplash.com/photo-1549421263-408b7594d21a?auto=format&fit=crop&w=1600&q=80');
+}
+
+.hero-about {
+  background-image: url('https://images.unsplash.com/photo-1518081461904-9b566b2b2747?auto=format&fit=crop&w=1600&q=80');
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
