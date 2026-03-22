@@ -1,47 +1,1050 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <link rel="icon" type="image/png" href="src/Logo.png">
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=http://dakshalgo.com:8501" />
-  <title>Signals - Daksh Algo Solutions</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Access live algorithmic trade signals for NIFTY, BANKNIFTY, and equities on NSE and BSE. Log in to your Daksh Algo member dashboard.">
+  <meta name="keywords"
+    content="live trade signals, NIFTY signals, algo signals India, trading signal dashboard, member login">
+  <title>Live Signals Dashboard | Daksh Algo Solutions</title>
+  <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ---- Signals-specific styles ---- */
+    .dash-section {
+      padding: 40px 0 60px;
+    }
+
+    .dash-tabs {
+      display: flex;
+      gap: 4px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 4px;
+      overflow-x: auto;
+    }
+
+    .dash-tab-btn {
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      color: var(--text-secondary);
+      background: transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .dash-tab-btn.active {
+      background: rgba(0, 212, 170, 0.12);
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .signal-filter-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .sf-btn {
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid var(--color-border);
+      color: var(--text-secondary);
+      background: transparent;
+      transition: all 0.2s;
+    }
+
+    .sf-btn.active {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background: rgba(0, 212, 170, 0.08);
+    }
+
+    .dash-notice {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      font-size: 0.82rem;
+      color: var(--color-warning);
+      margin-bottom: 24px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+  </style>
 </head>
+
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Daksh Algo Solutions</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-          <li class="nav-item"><a class="nav-link active" href="signals.html">Signals</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        </ul>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">
+        <img src="src/Logo.png" alt="Daksh Algo Logo" class="brand-logo">
+        Daksh <span class="accent">Algo</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="signals.html" class="active">Signals</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <button id="navLogoutBtn" onclick="handleLogout()"
+          style="display:none; padding: 8px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 0.875rem; font-weight: 500; color: var(--text-secondary); background: transparent; cursor: pointer; transition: var(--transition);">
+          Sign Out
+        </button>
+        <a href="contact.html" class="btn-nav-start" id="navStartBtn">Get Started</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
 
-  <section class="py-5 text-center">
-    <div class="container">
-      <p>Redirecting to <a href="http://www.dakshalgo.com:8501">DakshAlgo Signals</a>...</p>
-    </div>
-  </section>
+  <div class="page-content signals-page">
 
-  <footer class="bg-dark text-white text-center py-4">
+    <!-- ============================================================
+         AUTH SECTION (shown when logged out)
+    ============================================================ -->
+    <section class="auth-section" id="authSection">
+      <div class="auth-wrap">
+        <div class="auth-logo">
+          <div class="logo-mark">
+            <img src="src/Logo.png" alt="Daksh Algo Logo" class="logo-icon">
+            Daksh Algo
+          </div>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px;">Member Signals Portal</p>
+        </div>
+
+        <div class="glass-card auth-card">
+          <div class="auth-tabs">
+            <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
+            <button class="auth-tab" id="tabSignup" onclick="switchTab('signup')">Create Account</button>
+          </div>
+
+          <!-- LOGIN FORM -->
+          <div id="formLogin">
+            <div class="auth-title">Welcome back 👋</div>
+            <div class="auth-sub">Sign in to access your live signals dashboard.</div>
+
+            <form onsubmit="handleLogin(event)">
+              <div class="form-group">
+                <label for="loginEmail">Email Address</label>
+                <input type="email" id="loginEmail" placeholder="you@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="loginPass">Password</label>
+                <input type="password" id="loginPass" placeholder="••••••••" required>
+              </div>
+              <div style="display: flex; justify-content: flex-end; margin-bottom: 18px;">
+                <a href="#" style="font-size: 0.8rem; color: var(--color-accent);">Forgot password?</a>
+              </div>
+              <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                Sign In to Dashboard
+              </button>
+              <p id="loginError"
+                style="display:none; margin-top: 10px; font-size: 0.8rem; color: var(--color-danger); text-align: center;">
+              </p>
+            </form>
+
+            <div class="auth-divider"><span>or continue with</span></div>
+
+            <button onclick="handleDemoLogin()"
+              style="width: 100%; padding: 12px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: rgba(255,255,255,0.03); color: var(--text-primary); font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;">
+              🚀 Try Demo Account (No Login Needed)
+            </button>
+          </div>
+
+          <!-- SIGNUP FORM -->
+          <div id="formSignup" style="display: none;">
+            <div class="auth-title">Create your account</div>
+            <div class="auth-sub">Join 500+ traders accessing daily algo signals.</div>
+
+            <form onsubmit="handleSignup(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="signupFirst">First Name</label>
+                  <input type="text" id="signupFirst" placeholder="Rahul" required>
+                </div>
+                <div class="form-group">
+                  <label for="signupLast">Last Name</label>
+                  <input type="text" id="signupLast" placeholder="Kumar" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="signupEmail">Email Address</label>
+                <input type="email" id="signupEmail" placeholder="you@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="signupPhone">Phone (for WhatsApp alerts)</label>
+                <input type="tel" id="signupPhone" placeholder="+91 98765 43210" required>
+              </div>
+              <div class="form-group">
+                <label for="signupPlan">Preferred Plan</label>
+                <select id="signupPlan">
+                  <option value="">— Select a plan —</option>
+                  <option value="monthly">Monthly – ₹2,999/mo</option>
+                  <option value="yearly">Yearly – ₹24,999/yr (Best Value)</option>
+                  <option value="lifetime">Lifetime – ₹59,999 once</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="signupPass">Password</label>
+                <input type="password" id="signupPass" placeholder="Minimum 8 characters" required minlength="8">
+              </div>
+              <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 18px;">
+                <input type="checkbox" id="signupAgree" required style="margin-top: 3px; flex-shrink: 0;">
+                <label for="signupAgree" style="font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5;">I
+                  agree to the <a href="#" style="color: var(--color-accent);">Terms of Service</a> and confirm I
+                  understand trading involves risk and past returns don't guarantee future results.</label>
+              </div>
+              <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                Create Account &amp; Access Signals
+              </button>
+            </form>
+          </div>
+
+          <div class="auth-footer">
+            Need help? <a href="contact.html">Contact our team</a> — we respond within a few hours.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DASHBOARD SECTION (shown after login)
+    ============================================================ -->
+    <section class="dash-section" id="dashSection" style="display: none;">
+      <div class="container">
+
+        <!-- Header -->
+        <div class="dash-header fade-up">
+          <div>
+            <h2 class="dash-welcome">Good afternoon, <span class="gradient-text" id="dashUserName">Trader</span> 👋</h2>
+            <div class="dash-meta">
+              <span id="dashDate">Today · NSE &amp; BSE Markets · Live signals updating</span>
+              &nbsp;·&nbsp; <span style="color: var(--color-success); font-weight: 500;">● Markets Open</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <div
+              style="font-size: 0.78rem; color: var(--text-muted); border: 1px solid var(--color-border); padding: 6px 14px; border-radius: var(--radius-sm);">
+              Plan: <span style="color: var(--color-accent); font-weight: 600;" id="dashPlan">Yearly Pro</span>
+            </div>
+            <button onclick="handleLogout()"
+              style="padding: 8px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: transparent; color: var(--text-secondary); font-size: 0.82rem; cursor: pointer; transition: 0.2s;">
+              Sign Out
+            </button>
+          </div>
+        </div>
+
+        <!-- Market Notice -->
+        <div class="dash-notice fade-up">
+          ⚠️ <span><strong>Risk Disclaimer:</strong> Signals are generated algorithmically and should not be treated as
+            financial advice. Always use the suggested stop-loss and never risk more than you can afford to lose. Past
+            performance is not indicative of future returns.</span>
+        </div>
+
+        <!-- KPIs -->
+        <div class="dash-grid">
+          <div class="glass-card dash-kpi fade-up">
+            <div class="kpi-label">Today's Signals</div>
+            <div class="kpi-value blue">7</div>
+            <div class="kpi-change up">↑ 3 BUY &nbsp;|&nbsp; 4 SELL</div>
+          </div>
+          <div class="glass-card dash-kpi fade-up delay-1">
+            <div class="kpi-label">Week Hit Rate</div>
+            <div class="kpi-value green">81%</div>
+            <div class="kpi-change up">↑ +3% vs last week</div>
+          </div>
+          <div class="glass-card dash-kpi fade-up delay-2">
+            <div class="kpi-label">NIFTY Today</div>
+            <div class="kpi-value green">22,453</div>
+            <div class="kpi-change up">↑ +1.24% (+274 pts)</div>
+          </div>
+          <div class="glass-card dash-kpi fade-up delay-3">
+            <div class="kpi-label">Active Bots</div>
+            <div class="kpi-value purple">3</div>
+            <div class="kpi-change up">↑ All running normally</div>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="dash-tabs fade-up" style="margin-bottom: 28px;">
+          <button class="dash-tab-btn active" onclick="switchDashTab('live')">📡 Live Signals</button>
+          <button class="dash-tab-btn" onclick="switchDashTab('history')">📋 Signal History</button>
+          <button class="dash-tab-btn" onclick="switchDashTab('bots')">🤖 My Bots</button>
+          <button class="dash-tab-btn" onclick="switchDashTab('watchlist')">👁️ Watchlist</button>
+          <button class="dash-tab-btn" onclick="switchDashTab('performance')">📈 Performance</button>
+        </div>
+
+        <!-- TAB: Live Signals -->
+        <div class="tab-panel active" id="tab-live">
+          <div class="signal-filter-row">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Filter:</span>
+            <button class="sf-btn active" onclick="filterSig(this,'all')">All</button>
+            <button class="sf-btn" onclick="filterSig(this,'buy')">BUY</button>
+            <button class="sf-btn" onclick="filterSig(this,'sell')">SELL</button>
+            <button class="sf-btn" onclick="filterSig(this,'intraday')">Intraday</button>
+            <button class="sf-btn" onclick="filterSig(this,'positional')">Positional</button>
+          </div>
+
+          <div class="signals-grid" id="signalsGrid">
+
+            <div class="glass-card signal-card fade-up" data-type="buy intraday">
+              <div class="signal-header">
+                <div>
+                  <div class="signal-sym">NIFTY 50</div>
+                  <div class="signal-name">Intraday · Index Futures</div>
+                </div>
+                <div class="signal-badge buy">BUY</div>
+              </div>
+              <div class="signal-levels">
+                <div class="signal-level-item">
+                  <div class="sl-label">Entry</div>
+                  <div class="sl-value entry">22,280</div>
+                </div>
+                <div class="signal-level-item">
+                  <div class="sl-label">Stop Loss</div>
+                  <div class="sl-value stop">22,050</div>
+                </div>
+                <div class="signal-level-item">
+                  <div class="sl-label">Target</div>
+                  <div class="sl-value target">22,720</div>
+                </div>
+              </div>
+              <div class="signal-meta">
+                <div class="signal-accuracy">
+                  Accuracy:
+                  <div class="acc-bar">
+                    <div class="acc-fill" style="width: 82%;"></div>
+                  </div>
+                  82%
+                </div>
+                <span>Today · 09:22 AM</span>
+              </div>
+            </div>
+
+            <div class="glass-card signal-card fade-up delay-1" data-type="sell intraday">
+              <div class="signal-header">
+                <div>
+                  <div class="signal-sym">BANKNIFTY</div>
+                  <div class="signal-name">Intraday · Options</div>
+                </div>
+                <div class="signal-badge sell">SELL</div>
+              </div>
+              <div class="signal-levels">
+                <div class="signal-level-item">
+                  <div class="sl-label">Entry</div>
+                  <div class="sl-value entry">48,420</div>
+                </div>
+                <div class="signal-level-item">
+                  <div class="sl-label">Stop Loss</div>
+                  <div class="sl-value stop">48,700</div>
+                </div>
+                <div class="signal-level-item">
+                  <div class="sl-label">Target</div>
+                  <div class="sl-value target">47,900</div>
+                </div>
+              </div>
+              <div class="signal-meta">
+                <div class="signal-accuracy">
+                  Accuracy:
+                  <div class="acc-bar">
+                    <div class="acc-fill" style="width: 75%;"></div>
+                  </div>
+                  75%
+                </div>
+                <span>Today · 10:04 AM</span>
+              </div>
+            </div>
+
+            <div class="glass-card signal-card fade-up delay-2" data-type="buy positional">
+              <div class="signal-header">
+                <div>
+                  <div class="signal-sym">RELIANCE</div>
+                  <div class="signal-name">Positional · NSE Equity</div>
+                </div>
+                <div class="signal-badge buy">BUY</div>
+              </div>
+              <div class="signal-levels">
+                <div class="signal-level-item">
+                  <div class="sl-label">Entry</div>
+                  <div class="sl-value entry">2,860</div>
+                </div>
+                <div class="signal-level-item">
+                  <div class="sl-label">Stop Loss</div>
+                  <div class="sl-value stop">2,780</div>
+                </div>
+                <div class="signal-level-item">
+                  <div class="sl-label">Target</div>
+                  <div class="sl-value target">3,050</div>
+                </div>
+              </div>
+              <div class="signal-meta">
+                <div class="signal-accuracy">
+                  Accuracy:
+                  <div class="acc-bar">
+                    <div class="acc-fill" style="width: 79%;"></div>
+                  </div>
+                  79%
+                </div>
+                <span>Today · 09:45 AM</span>
+              </div>
+            </div>
+
+            <div class="glass-card signal-card fade-up" data-type="buy intraday">
+              <div class="signal-header">
+                <div>
+                  <div class="signal-sym">TCS</div>
+                  <div class="signal-name">Intraday · NSE Equity</div>
+                </div>
+                <div class="signal-badge buy">BUY</div>
+              </div>
+              <div class="signal-levels">
+                <div class="signal-level-item">
+                  <div class="sl-label">Entry</div>
+                  <div class="sl-value entry">3,620</div>
+                </div>
+                <div class="signal-level-item">
+                  <div class="sl-label">Stop Loss</div>
+                  <div class="sl-value stop">3,565</div>
+                </div>
+                <div class="signal-level-item">
+                  <div class="sl-label">Target</div>
+                  <div class="sl-value target">3,740</div>
+                </div>
+              </div>
+              <div class="signal-meta">
+                <div class="signal-accuracy">
+                  Accuracy:
+                  <div class="acc-bar">
+                    <div class="acc-fill" style="width: 85%;"></div>
+                  </div>
+                  85%
+                </div>
+                <span>Today · 10:30 AM</span>
+              </div>
+            </div>
+
+            <div class="glass-card signal-card fade-up delay-1" data-type="sell positional">
+              <div class="signal-header">
+                <div>
+                  <div class="signal-sym">HDFCBANK</div>
+                  <div class="signal-name">Positional · NSE Equity</div>
+                </div>
+                <div class="signal-badge sell">SELL</div>
+              </div>
+              <div class="signal-levels">
+                <div class="signal-level-item">
+                  <div class="sl-label">Entry</div>
+                  <div class="sl-value entry">1,695</div>
+                </div>
+                <div class="signal-level-item">
+                  <div class="sl-label">Stop Loss</div>
+                  <div class="sl-value stop">1,730</div>
+                </div>
+                <div class="signal-level-item">
+                  <div class="sl-label">Target</div>
+                  <div class="sl-value target">1,620</div>
+                </div>
+              </div>
+              <div class="signal-meta">
+                <div class="signal-accuracy">
+                  Accuracy:
+                  <div class="acc-bar">
+                    <div class="acc-fill" style="width: 71%;"></div>
+                  </div>
+                  71%
+                </div>
+                <span>Today · 11:15 AM</span>
+              </div>
+            </div>
+
+            <div class="glass-card signal-card fade-up delay-2" data-type="buy positional">
+              <div class="signal-header">
+                <div>
+                  <div class="signal-sym">INFY</div>
+                  <div class="signal-name">Positional · NSE Equity</div>
+                </div>
+                <div class="signal-badge buy">BUY</div>
+              </div>
+              <div class="signal-levels">
+                <div class="signal-level-item">
+                  <div class="sl-label">Entry</div>
+                  <div class="sl-value entry">1,450</div>
+                </div>
+                <div class="signal-level-item">
+                  <div class="sl-label">Stop Loss</div>
+                  <div class="sl-value stop">1,405</div>
+                </div>
+                <div class="signal-level-item">
+                  <div class="sl-label">Target</div>
+                  <div class="sl-value target">1,540</div>
+                </div>
+              </div>
+              <div class="signal-meta">
+                <div class="signal-accuracy">
+                  Accuracy:
+                  <div class="acc-bar">
+                    <div class="acc-fill" style="width: 76%;"></div>
+                  </div>
+                  76%
+                </div>
+                <span>Yesterday · 03:12 PM</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TAB: Signal History -->
+        <div class="tab-panel" id="tab-history">
+          <div class="glass-card fade-up" style="overflow: hidden;">
+            <div
+              style="padding: 20px 24px; border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="font-size: 0.95rem; font-weight: 600;">Recent Signal History</h4>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Showing last 30 trades</span>
+            </div>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.84rem;">
+              <thead>
+                <tr style="background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--color-border);">
+                  <th style="padding: 12px 20px; text-align: left; font-weight: 500; color: var(--text-muted);">Symbol
+                  </th>
+                  <th style="padding: 12px 20px; text-align: left; font-weight: 500; color: var(--text-muted);">Type
+                  </th>
+                  <th style="padding: 12px 20px; text-align: right; font-weight: 500; color: var(--text-muted);">Entry
+                  </th>
+                  <th style="padding: 12px 20px; text-align: right; font-weight: 500; color: var(--text-muted);">Exit
+                  </th>
+                  <th style="padding: 12px 20px; text-align: right; font-weight: 500; color: var(--text-muted);">P&amp;L
+                  </th>
+                  <th style="padding: 12px 20px; text-align: center; font-weight: 500; color: var(--text-muted);">Result
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="historyTableBody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB: My Bots -->
+        <div class="tab-panel" id="tab-bots">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px;">
+            <div class="glass-card fade-up" style="padding: 24px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                <div>
+                  <div style="font-size: 1rem; font-weight: 600;">NIFTY Scalper v2</div>
+                  <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">Intraday · 5-min chart
+                  </div>
+                </div>
+                <div
+                  style="font-size: 0.72rem; font-weight: 600; padding: 4px 10px; background: rgba(16,185,129,0.15); color: var(--color-success); border-radius: 100px;">
+                  ● Running</div>
+              </div>
+              <div
+                style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; padding: 16px; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); border: 1px solid var(--color-border); margin-bottom: 16px;">
+                <div style="text-align: center;">
+                  <div
+                    style="font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 3px;">
+                    Trades Today</div>
+                  <div style="font-family: 'Space Grotesk'; font-size: 1.1rem; font-weight: 600;">8</div>
+                </div>
+                <div style="text-align: center;">
+                  <div
+                    style="font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 3px;">
+                    Win Rate</div>
+                  <div
+                    style="font-family: 'Space Grotesk'; font-size: 1.1rem; font-weight: 600; color: var(--color-success);">
+                    75%</div>
+                </div>
+                <div style="text-align: center;">
+                  <div
+                    style="font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 3px;">
+                    P&amp;L Today</div>
+                  <div
+                    style="font-family: 'Space Grotesk'; font-size: 1.1rem; font-weight: 600; color: var(--color-success);">
+                    +₹4,820</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button
+                  style="flex: 1; padding: 9px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: transparent; color: var(--text-secondary); font-size: 0.82rem; cursor: pointer;">Configure</button>
+                <button
+                  style="flex: 1; padding: 9px; border: 1px solid rgba(239,68,68,0.3); border-radius: var(--radius-sm); background: transparent; color: var(--color-danger); font-size: 0.82rem; cursor: pointer;">Pause</button>
+              </div>
+            </div>
+
+            <div class="glass-card fade-up delay-1" style="padding: 24px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                <div>
+                  <div style="font-size: 1rem; font-weight: 600;">BankNifty Options Bot</div>
+                  <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">Weekly Expiry · Straddle
+                  </div>
+                </div>
+                <div
+                  style="font-size: 0.72rem; font-weight: 600; padding: 4px 10px; background: rgba(16,185,129,0.15); color: var(--color-success); border-radius: 100px;">
+                  ● Running</div>
+              </div>
+              <div
+                style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; padding: 16px; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); border: 1px solid var(--color-border); margin-bottom: 16px;">
+                <div style="text-align: center;">
+                  <div
+                    style="font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 3px;">
+                    Trades Today</div>
+                  <div style="font-family: 'Space Grotesk'; font-size: 1.1rem; font-weight: 600;">3</div>
+                </div>
+                <div style="text-align: center;">
+                  <div
+                    style="font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 3px;">
+                    Win Rate</div>
+                  <div
+                    style="font-family: 'Space Grotesk'; font-size: 1.1rem; font-weight: 600; color: var(--color-success);">
+                    67%</div>
+                </div>
+                <div style="text-align: center;">
+                  <div
+                    style="font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 3px;">
+                    P&amp;L Today</div>
+                  <div
+                    style="font-family: 'Space Grotesk'; font-size: 1.1rem; font-weight: 600; color: var(--color-danger);">
+                    -₹1,200</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button
+                  style="flex: 1; padding: 9px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: transparent; color: var(--text-secondary); font-size: 0.82rem; cursor: pointer;">Configure</button>
+                <button
+                  style="flex: 1; padding: 9px; border: 1px solid rgba(239,68,68,0.3); border-radius: var(--radius-sm); background: transparent; color: var(--color-danger); font-size: 0.82rem; cursor: pointer;">Pause</button>
+              </div>
+            </div>
+
+            <div class="glass-card fade-up delay-2"
+              style="padding: 24px; border-style: dashed; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 220px;">
+              <div style="font-size: 2rem; margin-bottom: 12px;">➕</div>
+              <div style="font-size: 0.95rem; font-weight: 600; margin-bottom: 6px;">Add a New Bot</div>
+              <div style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 18px;">Connect a new strategy
+                or deploy a custom bot to your broker account.</div>
+              <a href="contact.html" class="btn-secondary" style="font-size: 0.82rem; padding: 9px 18px;">Request Bot
+                Setup</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Watchlist -->
+        <div class="tab-panel" id="tab-watchlist">
+          <div class="glass-card fade-up" style="overflow: hidden;">
+            <div style="padding: 20px 24px; border-bottom: 1px solid var(--color-border);">
+              <h4 style="font-size: 0.95rem;">My Watchlist</h4>
+            </div>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
+              <thead>
+                <tr style="background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--color-border);">
+                  <th style="padding: 12px 20px; text-align: left; color: var(--text-muted); font-weight: 500;">Symbol
+                  </th>
+                  <th style="padding: 12px 20px; text-align: right; color: var(--text-muted); font-weight: 500;">LTP
+                  </th>
+                  <th style="padding: 12px 20px; text-align: right; color: var(--text-muted); font-weight: 500;">Change
+                  </th>
+                  <th style="padding: 12px 20px; text-align: right; color: var(--text-muted); font-weight: 500;">Volume
+                  </th>
+                  <th style="padding: 12px 20px; text-align: center; color: var(--text-muted); font-weight: 500;">Signal
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--color-border);">
+                  <td style="padding: 14px 20px; font-weight: 600;">NIFTY 50</td>
+                  <td style="padding: 14px 20px; text-align: right; font-family: 'Space Grotesk'; font-weight: 600;">
+                    22,453.80</td>
+                  <td style="padding: 14px 20px; text-align: right; color: var(--color-success);">+274.40 (+1.24%)</td>
+                  <td style="padding: 14px 20px; text-align: right; color: var(--text-secondary);">—</td>
+                  <td style="padding: 14px 20px; text-align: center;"><span
+                      style="font-size: 0.72rem; font-weight: 700; padding: 3px 8px; background: rgba(16,185,129,0.15); color: var(--color-success); border-radius: 100px;">BUY</span>
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--color-border); background: rgba(255,255,255,0.01);">
+                  <td style="padding: 14px 20px; font-weight: 600;">BANKNIFTY</td>
+                  <td style="padding: 14px 20px; text-align: right; font-family: 'Space Grotesk'; font-weight: 600;">
+                    48,210.40</td>
+                  <td style="padding: 14px 20px; text-align: right; color: var(--color-success);">+415.60 (+0.87%)</td>
+                  <td style="padding: 14px 20px; text-align: right; color: var(--text-secondary);">—</td>
+                  <td style="padding: 14px 20px; text-align: center;"><span
+                      style="font-size: 0.72rem; font-weight: 700; padding: 3px 8px; background: rgba(245,158,11,0.15); color: var(--color-warning); border-radius: 100px;">HOLD</span>
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--color-border);">
+                  <td style="padding: 14px 20px; font-weight: 600;">RELIANCE</td>
+                  <td style="padding: 14px 20px; text-align: right; font-family: 'Space Grotesk'; font-weight: 600;">
+                    2,894.55</td>
+                  <td style="padding: 14px 20px; text-align: right; color: var(--color-danger);">-9.25 (-0.32%)</td>
+                  <td style="padding: 14px 20px; text-align: right; color: var(--text-secondary);">4.2M</td>
+                  <td style="padding: 14px 20px; text-align: center;"><span
+                      style="font-size: 0.72rem; font-weight: 700; padding: 3px 8px; background: rgba(16,185,129,0.15); color: var(--color-success); border-radius: 100px;">BUY</span>
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--color-border); background: rgba(255,255,255,0.01);">
+                  <td style="padding: 14px 20px; font-weight: 600;">TCS</td>
+                  <td style="padding: 14px 20px; text-align: right; font-family: 'Space Grotesk'; font-weight: 600;">
+                    3,651.20</td>
+                  <td style="padding: 14px 20px; text-align: right; color: var(--color-success);">+38.00 (+1.05%)</td>
+                  <td style="padding: 14px 20px; text-align: right; color: var(--text-secondary);">1.8M</td>
+                  <td style="padding: 14px 20px; text-align: center;"><span
+                      style="font-size: 0.72rem; font-weight: 700; padding: 3px 8px; background: rgba(16,185,129,0.15); color: var(--color-success); border-radius: 100px;">BUY</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 14px 20px; font-weight: 600;">HDFC BANK</td>
+                  <td style="padding: 14px 20px; text-align: right; font-family: 'Space Grotesk'; font-weight: 600;">
+                    1,682.30</td>
+                  <td style="padding: 14px 20px; text-align: right; color: var(--color-danger);">-3.05 (-0.18%)</td>
+                  <td style="padding: 14px 20px; text-align: right; color: var(--text-secondary);">3.1M</td>
+                  <td style="padding: 14px 20px; text-align: center;"><span
+                      style="font-size: 0.72rem; font-weight: 700; padding: 3px 8px; background: rgba(239,68,68,0.15); color: var(--color-danger); border-radius: 100px;">SELL</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB: Performance -->
+        <div class="tab-panel" id="tab-performance">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px;">
+            <div class="glass-card fade-up" style="padding: 28px;">
+              <h4 style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">Monthly P&amp;L (Last 6
+                Months)</h4>
+              <div style="display: flex; gap: 6px; align-items: flex-end; height: 100px;">
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                  <span style="font-size: 0.68rem; color: var(--color-success);">+12%</span>
+                  <div style="width: 100%; background: rgba(16,185,129,0.4); border-radius: 3px 3px 0 0; height: 55%;">
+                  </div>
+                  <span style="font-size: 0.68rem; color: var(--text-muted);">Oct</span>
+                </div>
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                  <span style="font-size: 0.68rem; color: var(--color-success);">+18%</span>
+                  <div style="width: 100%; background: rgba(16,185,129,0.4); border-radius: 3px 3px 0 0; height: 80%;">
+                  </div>
+                  <span style="font-size: 0.68rem; color: var(--text-muted);">Nov</span>
+                </div>
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                  <span style="font-size: 0.68rem; color: var(--color-danger);">-4%</span>
+                  <div style="width: 100%; background: rgba(239,68,68,0.4); border-radius: 3px 3px 0 0; height: 18%;">
+                  </div>
+                  <span style="font-size: 0.68rem; color: var(--text-muted);">Dec</span>
+                </div>
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                  <span style="font-size: 0.68rem; color: var(--color-success);">+24%</span>
+                  <div style="width: 100%; background: rgba(0,212,170,0.5); border-radius: 3px 3px 0 0; height: 100%;">
+                  </div>
+                  <span style="font-size: 0.68rem; color: var(--text-muted);">Jan</span>
+                </div>
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                  <span style="font-size: 0.68rem; color: var(--color-success);">+9%</span>
+                  <div style="width: 100%; background: rgba(16,185,129,0.4); border-radius: 3px 3px 0 0; height: 40%;">
+                  </div>
+                  <span style="font-size: 0.68rem; color: var(--text-muted);">Feb</span>
+                </div>
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                  <span style="font-size: 0.68rem; color: var(--color-success);">+14%</span>
+                  <div style="width: 100%; background: rgba(16,185,129,0.4); border-radius: 3px 3px 0 0; height: 62%;">
+                  </div>
+                  <span style="font-size: 0.68rem; color: var(--text-muted);">Mar</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card fade-up delay-1" style="padding: 28px;">
+              <h4 style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">Strategy Performance
+                Breakdown</h4>
+              <div style="display: flex; flex-direction: column; gap: 14px;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.82rem;">
+                    <span>NIFTY Intraday Bot</span>
+                    <span style="color: var(--color-success);">+24.8%</span>
+                  </div>
+                  <div style="height: 4px; background: var(--color-border); border-radius: 2px; overflow: hidden;">
+                    <div style="width: 83%; height: 100%; background: var(--color-success); border-radius: 2px;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.82rem;">
+                    <span>BankNifty Options Straddle</span>
+                    <span style="color: var(--color-success);">+15.2%</span>
+                  </div>
+                  <div style="height: 4px; background: var(--color-border); border-radius: 2px; overflow: hidden;">
+                    <div style="width: 51%; height: 100%; background: var(--gradient-brand); border-radius: 2px;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.82rem;">
+                    <span>Midcap Swing Signals</span>
+                    <span style="color: var(--color-success);">+31.5%</span>
+                  </div>
+                  <div style="height: 4px; background: var(--color-border); border-radius: 2px; overflow: hidden;">
+                    <div style="width: 90%; height: 100%; background: var(--color-accent); border-radius: 2px;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card fade-up"
+            style="padding: 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center;">
+            <div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px;">
+                Total Signals (30d)</div>
+              <div style="font-family: 'Space Grotesk'; font-size: 1.6rem; font-weight: 700;">142</div>
+            </div>
+            <div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px;">
+                Win Rate (30d)</div>
+              <div
+                style="font-family: 'Space Grotesk'; font-size: 1.6rem; font-weight: 700; color: var(--color-success);">
+                81%</div>
+            </div>
+            <div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px;">
+                Avg Risk:Reward</div>
+              <div
+                style="font-family: 'Space Grotesk'; font-size: 1.6rem; font-weight: 700; color: var(--color-accent);">
+                1:2.4</div>
+            </div>
+            <div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px;">
+                Max Drawdown</div>
+              <div
+                style="font-family: 'Space Grotesk'; font-size: 1.6rem; font-weight: 700; color: var(--color-danger);">
+                -6.2%</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="site-footer">
     <div class="container">
-      <p class="mb-0">&copy; 2025 Daksh Algo Solutions</p>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-name">
+            <img src="src/Logo.png" alt="Daksh Algo Logo" class="icon">Daksh Algo Solutions
+          </div>
+          <p>India's trusted algorithmic trading partner. Signals, bots, and platforms for NSE &amp; BSE markets.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn">𝕏</a>
+            <a href="#" class="social-btn">in</a>
+            <a href="#" class="social-btn">✈</a>
+            <a href="#" class="social-btn">▶</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Pages</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="signals.html">Live Signals</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="services.html">Algo Trading Bots</a></li>
+            <li><a href="services.html">Live Trade Signals</a></li>
+            <li><a href="services.html">Strategy Backtesting</a></li>
+            <li><a href="services.html">Options Builder</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="mailto:mani.moneymagnet@gmail.com">mani.moneymagnet@gmail.com</a></li>
+            <li><a href="tel:+919154196999">+91-9154196999</a></li>
+            <li><a href="#">Manikonda, Hyderabad</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Daksh Algo Solutions. All rights reserved.</span>
+        <span>Built in Hyderabad 🇮🇳</span>
+      </div>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ---- Scroll nav ----
+    const nav = document.getElementById('siteNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+    const toggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+    // ---- Auth tab switch ----
+    function switchTab(tab) {
+      document.getElementById('formLogin').style.display = tab === 'login' ? 'block' : 'none';
+      document.getElementById('formSignup').style.display = tab === 'signup' ? 'block' : 'none';
+      document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+      document.getElementById('tabSignup').classList.toggle('active', tab === 'signup');
+    }
+
+    // ---- Demo Login ----
+    function handleDemoLogin() {
+      showDashboard('Demo Trader', 'Yearly Pro');
+    }
+
+    // ---- Real Login (simulated) ----
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const pass = document.getElementById('loginPass').value;
+      const errEl = document.getElementById('loginError');
+      // Simulate: accept any non-empty combo
+      if (!email || !pass) { errEl.style.display = 'block'; errEl.textContent = 'Please fill in all fields.'; return; }
+      const name = email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      showDashboard(name, 'Yearly Pro');
+    }
+
+    // ---- Signup (simulated) ----
+    function handleSignup(e) {
+      e.preventDefault();
+      const first = document.getElementById('signupFirst').value;
+      const plan = document.getElementById('signupPlan').value;
+      const planMap = { monthly: 'Monthly Starter', yearly: 'Yearly Pro', lifetime: 'Lifetime Access', '': 'Monthly Starter' };
+      showDashboard(first, planMap[plan] || 'Yearly Pro');
+    }
+
+    // ---- Show dashboard ----
+    function showDashboard(name, plan) {
+      document.getElementById('authSection').style.display = 'none';
+      document.getElementById('dashSection').style.display = 'block';
+      document.getElementById('navLogoutBtn').style.display = 'block';
+      document.getElementById('navStartBtn').style.display = 'none';
+      document.getElementById('dashUserName').textContent = name;
+      document.getElementById('dashPlan').textContent = plan;
+
+      // Set date
+      const now = new Date();
+      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      document.getElementById('dashDate').textContent =
+        `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()} · NSE & BSE Markets`;
+
+      populateHistory();
+      // Run observer on dash elements
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+    }
+
+    // ---- Logout ----
+    function handleLogout() {
+      document.getElementById('authSection').style.display = 'flex';
+      document.getElementById('dashSection').style.display = 'none';
+      document.getElementById('navLogoutBtn').style.display = 'none';
+      document.getElementById('navStartBtn').style.display = 'block';
+      document.getElementById('loginEmail').value = '';
+      document.getElementById('loginPass').value = '';
+    }
+
+    // ---- Dashboard tab switch ----
+    function switchDashTab(tab) {
+      document.querySelectorAll('.dash-tab-btn').forEach((b, i) => {
+        const tabs = ['live', 'history', 'bots', 'watchlist', 'performance'];
+        b.classList.toggle('active', tabs[i] === tab);
+      });
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+    }
+
+    // ---- Signal filter ----
+    function filterSig(btn, type) {
+      document.querySelectorAll('.sf-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.signal-card').forEach(card => {
+        const types = card.getAttribute('data-type') || '';
+        card.style.display = (type === 'all' || types.includes(type)) ? 'block' : 'none';
+      });
+    }
+
+    // ---- Populate history table ----
+    function populateHistory() {
+      const data = [
+        { sym: 'NIFTY 50', type: 'BUY', entry: '22,100', exit: '22,420', pl: '+₹3,200', res: 'WIN' },
+        { sym: 'BANKNIFTY', type: 'SELL', entry: '48,800', exit: '47,950', pl: '+₹2,550', res: 'WIN' },
+        { sym: 'RELIANCE', type: 'BUY', entry: '2,810', exit: '2,790', pl: '-₹600', res: 'LOSS' },
+        { sym: 'TCS', type: 'BUY', entry: '3,580', exit: '3,710', pl: '+₹1,950', res: 'WIN' },
+        { sym: 'INFY', type: 'SELL', entry: '1,490', exit: '1,421', pl: '+₹2,070', res: 'WIN' },
+        { sym: 'HDFC BANK', type: 'BUY', entry: '1,650', exit: '1,700', pl: '+₹1,500', res: 'WIN' },
+        { sym: 'WIPRO', type: 'SELL', entry: '470', exit: '480', pl: '-₹300', res: 'LOSS' },
+        { sym: 'NIFTY 50', type: 'BUY', entry: '21,900', exit: '22,250', pl: '+₹5,250', res: 'WIN' },
+      ];
+      const tbody = document.getElementById('historyTableBody');
+      tbody.innerHTML = data.map(d => `
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: 13px 20px; font-weight: 600;">${d.sym}</td>
+          <td style="padding: 13px 20px;">
+            <span style="font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 100px; ${d.type === 'BUY' ? 'background: rgba(16,185,129,0.12); color: var(--color-success)' : 'background: rgba(239,68,68,0.12); color: var(--color-danger)'}">
+              ${d.type}
+            </span>
+          </td>
+          <td style="padding: 13px 20px; text-align: right; font-family: 'Space Grotesk';">${d.entry}</td>
+          <td style="padding: 13px 20px; text-align: right; font-family: 'Space Grotesk';">${d.exit}</td>
+          <td style="padding: 13px 20px; text-align: right; font-weight: 600; ${d.pl.startsWith('+') ? 'color: var(--color-success)' : 'color: var(--color-danger)'}">
+            ${d.pl}
+          </td>
+          <td style="padding: 13px 20px; text-align: center;">
+            <span style="font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; ${d.res === 'WIN' ? 'background: rgba(16,185,129,0.1); color: var(--color-success)' : 'background: rgba(239,68,68,0.1); color: var(--color-danger)'}">
+              ${d.res}
+            </span>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // ---- Initial animations ----
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
 </body>
+
 </html>

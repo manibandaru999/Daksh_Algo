@@ -1,73 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="src/Logo.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Daksh Algo Solutions delivers algorithmic trading bots, stock market automation and real-time trade signals for smarter investing.">
-  <meta name="keywords" content="algorithmic trading, trading bots, stock market signals, automated trading software, custom trading applications">
+  <meta name="description" content="Daksh Algo Solutions delivers algorithmic trading bots, AI-powered trade signals, and custom automated trading software for smarter investing.">
+  <meta name="keywords" content="algorithmic trading, automated trading bots, stock market signals, algo trading India, trading software, NSE BSE signals">
+  <meta property="og:title" content="Daksh Algo Solutions | Algorithmic Trading Services">
+  <meta property="og:description" content="Smarter algorithmic trading — automated bots, real-time trade signals, and custom platforms built for Indian markets.">
   <title>Daksh Algo Solutions | Algorithmic Trading Services</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lux/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Daksh Algo Solutions</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-          <li class="nav-item"><a class="nav-link" href="signals.html">Signals</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        </ul>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">
+        <img src="src/Logo.png" alt="Daksh Algo Logo" class="brand-logo">
+        Daksh <span class="accent">Algo</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="signals.html">Signals</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="signals.html" class="btn-nav-login">Login</a>
+        <a href="contact.html" class="btn-nav-start">Get Started</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
 
-  <header class="hero hero-home text-center">
-    <div class="hero-content container">
-      <h1 class="display-4 fw-bold">Smarter Algorithmic Trading, Automated for You</h1>
-      <p class="lead mb-4">Our algorithmic trading solutions help traders design profitable strategies, build automated trading bots, and receive real-time stock market trade suggestions so you can trade with confidence.</p>
-      <a href="contact.html" class="btn btn-primary btn-lg">Get Started Today</a>
-    </div>
-  </header>
+  <!-- ====== HERO ====== -->
+  <section class="hero-home page-content">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-grid-lines"></div>
 
-  <section class="py-5">
+    <div class="container hero-inner">
+      <div class="hero-badge fade-up">
+        <span class="dot"></span>
+        Live Signals Active &nbsp;·&nbsp; NSE &amp; BSE Markets
+      </div>
+
+      <h1 class="hero-title fade-up delay-1">
+        Smarter Trading,<br>
+        <span class="gradient-text">Fully Automated</span>
+      </h1>
+
+      <p class="hero-subtitle fade-up delay-2">
+        We build high-performance algorithmic trading bots, deliver AI-powered real-time trade signals, and create custom platforms for consistently profitable results in Indian stock markets.
+      </p>
+
+      <div class="hero-actions fade-up delay-3">
+        <a href="signals.html" class="btn-primary">
+          View Live Signals
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="services.html" class="btn-secondary">Explore Services</a>
+      </div>
+
+      <div class="hero-stats fade-up delay-4">
+        <div class="hero-stat-item">
+          <div class="stat-number" id="counterTrades">5+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Active Traders</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="stat-number">78%</div>
+          <div class="stat-label">Signal Accuracy</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Bot Uptime</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== LIVE TICKER ====== -->
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="tickerTrack">
+      <span class="ticker-item"><span class="ticker-sym">NIFTY 50</span><span class="ticker-price">22,453.80</span><span class="ticker-change up">▲ +1.24%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">BANKNIFTY</span><span class="ticker-price">48,210.40</span><span class="ticker-change up">▲ +0.87%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">RELIANCE</span><span class="ticker-price">2,894.55</span><span class="ticker-change down">▼ -0.32%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">TCS</span><span class="ticker-price">3,651.20</span><span class="ticker-change up">▲ +1.05%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">INFY</span><span class="ticker-price">1,472.90</span><span class="ticker-change up">▲ +0.62%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">HDFC BANK</span><span class="ticker-price">1,682.30</span><span class="ticker-change down">▼ -0.18%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">ICICI BANK</span><span class="ticker-price">1,124.75</span><span class="ticker-change up">▲ +0.94%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">WIPRO</span><span class="ticker-price">456.80</span><span class="ticker-change up">▲ +0.41%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">NIFTY 50</span><span class="ticker-price">22,453.80</span><span class="ticker-change up">▲ +1.24%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">BANKNIFTY</span><span class="ticker-price">48,210.40</span><span class="ticker-change up">▲ +0.87%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">RELIANCE</span><span class="ticker-price">2,894.55</span><span class="ticker-change down">▼ -0.32%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">TCS</span><span class="ticker-price">3,651.20</span><span class="ticker-change up">▲ +1.05%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">INFY</span><span class="ticker-price">1,472.90</span><span class="ticker-change up">▲ +0.62%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">HDFC BANK</span><span class="ticker-price">1,682.30</span><span class="ticker-change down">▼ -0.18%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">ICICI BANK</span><span class="ticker-price">1,124.75</span><span class="ticker-change up">▲ +0.94%</span></span>
+      <span class="ticker-sep">|</span>
+      <span class="ticker-item"><span class="ticker-sym">WIPRO</span><span class="ticker-price">456.80</span><span class="ticker-change up">▲ +0.41%</span></span>
+    </div>
+  </div>
+
+  <!-- ====== SERVICES OVERVIEW ====== -->
+  <section class="section">
     <div class="container">
-      <h2 class="text-center mb-4">Algorithmic Trading Services</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1559521784-86b8590b007f?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Trading bots">
-            <div class="card-body">
-              <h5 class="card-title">Algo Trading Bots</h5>
-              <p class="card-text">Build & deploy automated trading bots tailored for your strategies across equities, forex, and crypto markets.</p>
+      <div class="section-header">
+        <div class="section-label fade-up">What We Offer</div>
+        <h2 class="fade-up delay-1">Algorithmic Trading Services</h2>
+        <p class="fade-up delay-2">End-to-end automation for traders who are serious about consistent, data-driven results across NSE and BSE markets.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="glass-card service-card fade-up">
+          <div class="service-icon" style="background: rgba(0,212,170,0.1);">🤖</div>
+          <h3>Algo Trading Bots</h3>
+          <p>Custom-built automated trading bots that execute your strategies with precision across equities, futures, and options — running 24/7 without emotional interference.</p>
+          <a href="services.html" class="service-link">Learn More →</a>
+        </div>
+
+        <div class="glass-card service-card fade-up delay-1">
+          <div class="service-icon" style="background: rgba(59,130,246,0.1);">📡</div>
+          <h3>Live Trade Signals</h3>
+          <p>AI-driven intraday and positional signals with precise entry, stop-loss, and target levels. Signals are backed by backtested algorithms and historical analysis.</p>
+          <a href="signals.html" class="service-link">Access Signals →</a>
+        </div>
+
+        <div class="glass-card service-card fade-up delay-2">
+          <div class="service-icon" style="background: rgba(139,92,246,0.1);">📊</div>
+          <h3>Custom Trading Platforms</h3>
+          <p>We design and develop bespoke trading dashboards, portfolio trackers, and strategy testing tools with real-time data feeds and broker API integrations.</p>
+          <a href="services.html" class="service-link">Learn More →</a>
+        </div>
+
+        <div class="glass-card service-card fade-up delay-3">
+          <div class="service-icon" style="background: rgba(245,158,11,0.1);">📈</div>
+          <h3>Strategy Backtesting</h3>
+          <p>Validate your trading ideas with our advanced backtesting framework. We test strategies across years of market data to identify truly profitable approaches.</p>
+          <a href="services.html" class="service-link">Learn More →</a>
+        </div>
+
+        <div class="glass-card service-card fade-up delay-1">
+          <div class="service-icon" style="background: rgba(239,68,68,0.1);">⚡</div>
+          <h3>Options Strategy Builder</h3>
+          <p>Sophisticated options strategy automation covering covered calls, spreads, iron condors, and custom multi-leg strategies with Greeks-based risk management.</p>
+          <a href="services.html" class="service-link">Learn More →</a>
+        </div>
+
+        <div class="glass-card service-card fade-up delay-2">
+          <div class="service-icon" style="background: rgba(16,185,129,0.1);">🛡️</div>
+          <h3>Risk Management Tools</h3>
+          <p>Integrated position-sizing engines, drawdown controls, and real-time portfolio exposure monitoring to protect your capital in volatile market conditions.</p>
+          <a href="services.html" class="service-link">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== STATS ====== -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="stats-bar fade-up">
+        <div class="stat-block">
+          <div class="big-number">78%</div>
+          <div class="stat-desc">Signal Accuracy Rate</div>
+        </div>
+        <div class="stat-block">
+          <div class="big-number">500+</div>
+          <div class="stat-desc">Active Subscribers</div>
+        </div>
+        <div class="stat-block">
+          <div class="big-number">5+</div>
+          <div class="stat-desc">Years in Algo Trading</div>
+        </div>
+        <div class="stat-block">
+          <div class="big-number">₹0</div>
+          <div class="stat-desc">Hidden Charges</div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+        <div class="fade-up">
+          <div class="section-label">Why It Works</div>
+          <h2 style="font-size: clamp(1.5rem, 3.5vw, 2.2rem); margin-bottom: 16px;">Trade Smarter With <span class="gradient-text">Data-Driven Confidence</span></h2>
+          <p style="color: var(--text-secondary); line-height: 1.75; margin-bottom: 14px;">
+            Every signal we generate goes through rigorous backtesting on years of historical data. Our bots don't guess — they follow proven, rule-based logic that removes emotion from every trade.
+          </p>
+          <p style="color: var(--text-secondary); line-height: 1.75; margin-bottom: 24px;">
+            Whether you're a beginner exploring automation or an experienced trader looking to scale, we have the tools and expertise to take your performance to the next level.
+          </p>
+          <a href="about.html" class="btn-secondary">Our Story &amp; Approach</a>
+        </div>
+
+        <div class="fade-up delay-2">
+          <div class="glass-card" style="padding: 28px;">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--color-border);">
+                <span style="font-size: 0.85rem; color: var(--text-secondary);">NIFTY BUY Signal</span>
+                <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-success); background: rgba(16,185,129,0.12); padding: 3px 9px; border-radius: 100px;">+2.4% P&amp;L</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; text-align: center;">
+                <div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px;">Entry</div>
+                  <div style="font-family: 'Space Grotesk'; font-size: 1rem; font-weight: 600; color: #3b82f6;">22,180</div>
+                </div>
+                <div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px;">Stop</div>
+                  <div style="font-family: 'Space Grotesk'; font-size: 1rem; font-weight: 600; color: #ef4444;">21,950</div>
+                </div>
+                <div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px;">Target</div>
+                  <div style="font-family: 'Space Grotesk'; font-size: 1rem; font-weight: 600; color: #10b981;">22,720</div>
+                </div>
+              </div>
+              <div style="height: 4px; background: var(--color-border); border-radius: 2px; overflow: hidden;">
+                <div style="width: 74%; height: 100%; background: var(--gradient-brand); border-radius: 2px;"></div>
+              </div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); text-align: right;">Target achieved · 74% completed</div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Trade suggestions">
-            <div class="card-body">
-              <h5 class="card-title">Trade Suggestions</h5>
-              <p class="card-text">Receive AI-driven stock market signals and option trading ideas with detailed entry and exit levels.</p>
+
+          <div class="glass-card" style="padding: 22px; margin-top: 14px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+              <div style="font-size: 0.85rem; font-weight: 600;">Monthly Bot Performance</div>
+              <div style="font-size: 0.85rem; color: var(--color-success); font-weight: 600;">+18.4%</div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Custom applications">
-            <div class="card-body">
-              <h5 class="card-title">Custom Trading Applications</h5>
-              <p class="card-text">Design and development of trading dashboards, portfolio trackers, and strategy testing platforms with API integration.</p>
+            <div style="display: flex; gap: 3px; align-items: flex-end; height: 50px;">
+              <div style="flex: 1; background: rgba(0,212,170,0.4); border-radius: 3px 3px 0 0; height: 60%;"></div>
+              <div style="flex: 1; background: rgba(0,212,170,0.4); border-radius: 3px 3px 0 0; height: 80%;"></div>
+              <div style="flex: 1; background: rgba(239,68,68,0.4); border-radius: 3px 3px 0 0; height: 40%;"></div>
+              <div style="flex: 1; background: rgba(0,212,170,0.4); border-radius: 3px 3px 0 0; height: 90%;"></div>
+              <div style="flex: 1; background: rgba(0,212,170,0.4); border-radius: 3px 3px 0 0; height: 70%;"></div>
+              <div style="flex: 1; background: rgba(239,68,68,0.4); border-radius: 3px 3px 0 0; height: 30%;"></div>
+              <div style="flex: 1; background: rgba(0,212,170,0.4); border-radius: 3px 3px 0 0; height: 100%;"></div>
+              <div style="flex: 1; background: rgba(0,212,170,0.4); border-radius: 3px 3px 0 0; height: 75%;"></div>
             </div>
           </div>
         </div>
@@ -75,47 +269,176 @@
     </div>
   </section>
 
-  <section class="py-5 bg-light">
+  <!-- ====== PRICING PREVIEW ====== -->
+  <section class="section">
     <div class="container">
-      <h2 class="text-center mb-4">Algo Trading Subscription Plans</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 text-center shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Monthly Plan</h5>
-              <p class="card-text">Affordable way to access algorithmic trading signals and basic bot features.</p>
-              <a href="pricing.html" class="btn btn-primary">Learn More</a>
-            </div>
-          </div>
+      <div class="section-header">
+        <div class="section-label fade-up">Pricing</div>
+        <h2 class="fade-up delay-1">Simple, Transparent Plans</h2>
+        <p class="fade-up delay-2">No hidden fees. Choose the plan that fits your trading style. All plans include live signals, bot access, and dedicated support.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Monthly -->
+        <div class="glass-card pricing-card fade-up">
+          <div class="plan-icon">📅</div>
+          <div class="plan-name">Monthly</div>
+          <div class="plan-price"><span class="currency">₹</span>2,999<span class="period">/mo</span></div>
+          <div class="plan-desc">Perfect for traders who want to test our signals and bots before committing long-term.</div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> Live trade signals (NSE &amp; BSE)</li>
+            <li><span class="check">✓</span> Basic algo bot access</li>
+            <li><span class="check">✓</span> Entry, SL &amp; target levels</li>
+            <li><span class="check">✓</span> Email &amp; WhatsApp alerts</li>
+            <li><span class="check">✓</span> Community forum access</li>
+          </ul>
+          <a href="pricing.html" class="plan-btn">Get Started</a>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100 text-center shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Yearly Plan</h5>
-              <p class="card-text">Save more with annual access to advanced analytics and automated trading tools.</p>
-              <a href="pricing.html" class="btn btn-primary">Learn More</a>
-            </div>
-          </div>
+
+        <!-- Yearly (Featured) -->
+        <div class="glass-card pricing-card featured fade-up delay-1">
+          <div class="plan-icon">🚀</div>
+          <div class="plan-name">Yearly</div>
+          <div class="plan-price"><span class="currency">₹</span>24,999<span class="period">/yr</span></div>
+          <div class="plan-desc">Best value. Unlock advanced analytics, priority support, and full bot customization.</div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> Everything in Monthly</li>
+            <li><span class="check">✓</span> Advanced algo bots</li>
+            <li><span class="check">✓</span> Backtesting dashboard</li>
+            <li><span class="check">✓</span> Options strategy builder</li>
+            <li><span class="check">✓</span> Priority 1-on-1 support</li>
+            <li><span class="check">✓</span> Save ₹11,000 vs monthly</li>
+          </ul>
+          <a href="pricing.html" class="plan-btn">Get Started</a>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100 text-center shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Lifetime Plan</h5>
-              <p class="card-text">One-time investment for unlimited algorithmic trading updates and premium support.</p>
-              <a href="pricing.html" class="btn btn-primary">Learn More</a>
-            </div>
-          </div>
+
+        <!-- Lifetime -->
+        <div class="glass-card pricing-card fade-up delay-2">
+          <div class="plan-icon">♾️</div>
+          <div class="plan-name">Lifetime</div>
+          <div class="plan-price"><span class="currency">₹</span>59,999<span class="period"> once</span></div>
+          <div class="plan-desc">One-time investment. Unlimited access forever with every future feature and update included.</div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> Everything in Yearly</li>
+            <li><span class="check">✓</span> Custom bot development</li>
+            <li><span class="check">✓</span> Lifetime updates</li>
+            <li><span class="check">✓</span> Dedicated account manager</li>
+            <li><span class="check">✓</span> White-label option</li>
+          </ul>
+          <a href="pricing.html" class="plan-btn">Get Started</a>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="bg-dark text-white text-center py-4">
+  <!-- ====== CTA BANNER ====== -->
+  <section class="section">
     <div class="container">
-      <p class="mb-0">&copy; 2025 Daksh Algo Solutions</p>
+      <div class="glass-card" style="padding: 64px 48px; text-align: center; background: linear-gradient(145deg, rgba(0,212,170,0.06), rgba(59,130,246,0.04)); border-color: rgba(0,212,170,0.2);">
+        <div class="section-label fade-up" style="margin: 0 auto 16px;">Start Today</div>
+        <h2 style="font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 14px;" class="fade-up delay-1">
+          Ready to Automate<br>Your <span class="gradient-text">Trading Edge?</span>
+        </h2>
+        <p style="color: var(--text-secondary); max-width: 480px; margin: 0 auto 32px; line-height: 1.7;" class="fade-up delay-2">
+          Join 500+ traders using Daksh Algo's bots and signals for consistent, data-driven market performance. Start your free trial today.
+        </p>
+        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;" class="fade-up delay-3">
+          <a href="contact.html" class="btn-primary">
+            Book a Free Consultation
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="pricing.html" class="btn-secondary">View All Plans</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-name">
+            <img src="src/Logo.png" alt="Daksh Algo Logo" class="icon">
+            Daksh Algo Solutions
+          </div>
+          <p>India's trusted algorithmic trading partner — delivering proven, automated strategies for NSE and BSE markets since 2020.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+            <a href="#" class="social-btn" aria-label="Telegram">✈</a>
+            <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Pages</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="signals.html">Live Signals</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="services.html">Algo Trading Bots</a></li>
+            <li><a href="services.html">Live Trade Signals</a></li>
+            <li><a href="services.html">Strategy Backtesting</a></li>
+            <li><a href="services.html">Options Builder</a></li>
+            <li><a href="services.html">Custom Platforms</a></li>
+            <li><a href="services.html">Risk Management</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="mailto:mani.moneymagnet@gmail.com">mani.moneymagnet@gmail.com</a></li>
+            <li><a href="tel:+919154196999">+91-9154196999</a></li>
+            <li><a href="#">Manikonda, Hyderabad, India</a></li>
+            <li><a href="contact.html">Send a Message</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2025 Daksh Algo Solutions. All rights reserved.</span>
+        <span>Built in Hyderabad 🇮🇳</span>
+      </div>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar scroll effect
+    const nav = document.getElementById('siteNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu toggle
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+    });
+
+    // Intersection Observer for fade-up animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>

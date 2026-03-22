@@ -1,82 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="src/Logo.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Choose from flexible algorithmic trading subscription plans. Access stock market signals, automated trading bots, and premium support.">
-  <meta name="keywords" content="algorithmic trading pricing, trading bot subscription, stock market signals plans, automated trading packages">
-  <title>Pricing | Algorithmic Trading Plans - Daksh Algo Solutions</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="description" content="Flexible pricing plans for algorithmic trading signals and bots from Daksh Algo Solutions. Monthly, Yearly, and Lifetime options with full feature access.">
+  <meta name="keywords" content="algo trading pricing India, trading signals subscription, trading bot plans, algorithmic trading cost">
+  <title>Pricing | Algo Trading Subscription Plans - Daksh Algo</title>
+  <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Daksh Algo Solutions</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-          <li class="nav-item"><a class="nav-link active" href="pricing.html">Pricing</a></li>
-          <li class="nav-item"><a class="nav-link" href="signals.html">Signals</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        </ul>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">
+        <img src="src/Logo.png" alt="Daksh Algo Logo" class="brand-logo">
+        Daksh <span class="accent">Algo</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html" class="active">Pricing</a></li>
+        <li><a href="signals.html">Signals</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="signals.html" class="btn-nav-login">Login</a>
+        <a href="contact.html" class="btn-nav-start">Get Started</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
 
-  <header class="bg-gradient text-white text-center py-5">
-    <div class="container">
-      <h1 class="display-4 fw-bold">Subscription Plans</h1>
-      <p class="lead mb-0">Flexible options designed for every trader.</p>
-    </div>
-  </header>
+  <div class="page-content">
 
-  <section class="py-5">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 text-center shadow-sm">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Monthly Plan</h5>
-              <p class="card-text flex-grow-1">Perfect for beginners starting with algorithmic trading signals and basic bot access.</p>
-            </div>
+    <!-- ====== PAGE HERO ====== -->
+    <header class="page-hero">
+      <div class="container">
+        <div class="section-label fade-up">Transparent Plans</div>
+        <h1 class="fade-up delay-1">Simple, Honest <span class="gradient-text">Pricing</span></h1>
+        <p class="fade-up delay-2">No hidden fees. No upsells. Choose the plan that fits your trading journey and get started today.</p>
+      </div>
+    </header>
+
+    <!-- ====== BILLING TOGGLE ====== -->
+    <section class="section" style="padding-top: 40px;">
+      <div class="container">
+
+        <div style="display: flex; justify-content: center; margin-bottom: 56px;" class="fade-up">
+          <div style="display: flex; background: rgba(255,255,255,0.04); border: 1px solid var(--color-border); border-radius: 100px; padding: 4px; gap: 4px;">
+            <button id="btnMonthly" onclick="setFreq('monthly')" style="padding: 8px 24px; border-radius: 100px; font-size: 0.875rem; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; background: var(--color-accent); color: var(--color-bg);">Monthly</button>
+            <button id="btnAnnual" onclick="setFreq('annual')" style="padding: 8px 24px; border-radius: 100px; font-size: 0.875rem; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; background: transparent; color: var(--text-secondary);">
+              Annual <span style="background: rgba(0,212,170,0.2); color: var(--color-accent); font-size: 0.7rem; padding: 2px 7px; border-radius: 100px; margin-left: 4px;">Save 30%</span>
+            </button>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100 text-center shadow-sm">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Yearly Plan</h5>
-              <p class="card-text flex-grow-1">Save more with annual access to advanced analytics, priority support, and enhanced automation.</p>
+
+        <!-- PRICING CARDS -->
+        <div class="pricing-grid">
+
+          <!-- Monthly Plan -->
+          <div class="glass-card pricing-card fade-up">
+            <div class="plan-icon">📅</div>
+            <div class="plan-name">Starter Monthly</div>
+            <div class="plan-price" id="price-monthly">
+              <span class="currency">₹</span><span class="price-num">2,999</span><span class="period">/mo</span>
             </div>
+            <div class="plan-desc">Perfect for traders who want to test our signals and bots before committing long-term. Includes all core features.</div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> Live NIFTY &amp; BANKNIFTY signals</li>
+              <li><span class="check">✓</span> Equity intraday signals (10–12/week)</li>
+              <li><span class="check">✓</span> Entry price, SL &amp; target levels</li>
+              <li><span class="check">✓</span> WhatsApp + Telegram alerts</li>
+              <li><span class="check">✓</span> Basic algo bot access</li>
+              <li><span class="check">✓</span> Weekly performance report</li>
+              <li><span class="check">✓</span> Community forum &amp; support</li>
+              <li style="color: var(--text-muted); opacity: 0.5;"><span class="check" style="color: var(--text-muted);">✕</span> Advanced bots &amp; backtesting</li>
+              <li style="color: var(--text-muted); opacity: 0.5;"><span class="check" style="color: var(--text-muted);">✕</span> Options strategy builder</li>
+            </ul>
+            <a href="contact.html" class="plan-btn">Get Started →</a>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 text-center shadow-sm">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Lifetime Plan</h5>
-              <p class="card-text flex-grow-1">One-time investment for unlimited updates, premium features, and lifetime algorithmic trading support.</p>
+
+          <!-- Yearly Plan (Featured) -->
+          <div class="glass-card pricing-card featured fade-up delay-1">
+            <div class="plan-icon">🚀</div>
+            <div class="plan-name">Pro Yearly</div>
+            <div class="plan-price" id="price-yearly">
+              <span class="currency">₹</span><span class="price-num">24,999</span><span class="period">/yr</span>
             </div>
+            <div class="plan-desc">Our most popular plan. Full access to all bots, signals, and tools. Priority support and maximum savings.</div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> Everything in Starter Monthly</li>
+              <li><span class="check">✓</span> Advanced multi-strategy algo bots</li>
+              <li><span class="check">✓</span> Backtesting dashboard access</li>
+              <li><span class="check">✓</span> Options strategy builder</li>
+              <li><span class="check">✓</span> Positional &amp; swing signals</li>
+              <li><span class="check">✓</span> Daily risk summary reports</li>
+              <li><span class="check">✓</span> Priority 1-on-1 support (2hr SLA)</li>
+              <li><span class="check">✓</span> Monthly 1-on-1 strategy review</li>
+              <li><span class="check">✓</span> Saves ₹11,000 vs monthly billing</li>
+            </ul>
+            <a href="contact.html" class="plan-btn">Get Started →</a>
+          </div>
+
+          <!-- Lifetime Plan -->
+          <div class="glass-card pricing-card fade-up delay-2">
+            <div class="plan-icon">♾️</div>
+            <div class="plan-name">Lifetime Access</div>
+            <div class="plan-price" id="price-lifetime">
+              <span class="currency">₹</span><span class="price-num">59,999</span><span class="period"> once</span>
+            </div>
+            <div class="plan-desc">Pay once, keep forever. Every future feature, update, and new strategy we build — yours at no extra cost. Ever.</div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> Everything in Pro Yearly</li>
+              <li><span class="check">✓</span> Custom bot development (1 bot)</li>
+              <li><span class="check">✓</span> Lifetime updates &amp; new strategies</li>
+              <li><span class="check">✓</span> Dedicated account manager</li>
+              <li><span class="check">✓</span> White-label options available</li>
+              <li><span class="check">✓</span> Broker API setup assistance</li>
+              <li><span class="check">✓</span> Weekly 1-on-1 coaching calls</li>
+              <li><span class="check">✓</span> Early access to new features</li>
+              <li><span class="check">✓</span> VIP Telegram community access</li>
+            </ul>
+            <a href="contact.html" class="plan-btn">Get Started →</a>
+          </div>
+
+        </div>
+
+        <!-- Feature comparison note -->
+        <p style="text-align: center; font-size: 0.82rem; color: var(--text-muted); margin-top: 32px;" class="fade-up">
+          All plans include a 7-day money-back guarantee. No questions asked. &nbsp;·&nbsp; GST additional as applicable.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ====== FEATURE COMPARISON TABLE ====== -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label fade-up">Compare</div>
+          <h2 class="fade-up delay-1">Full Feature Comparison</h2>
+        </div>
+
+        <div class="glass-card fade-up" style="overflow: hidden;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
+            <thead>
+              <tr style="background: rgba(0,212,170,0.06); border-bottom: 1px solid var(--color-border);">
+                <th style="padding: 16px 20px; text-align: left; font-weight: 600; color: var(--text-primary);">Feature</th>
+                <th style="padding: 16px 20px; text-align: center; font-weight: 600; color: var(--text-primary);">Monthly</th>
+                <th style="padding: 16px 20px; text-align: center; font-weight: 600; color: var(--color-accent);">Yearly ★</th>
+                <th style="padding: 16px 20px; text-align: center; font-weight: 600; color: var(--text-primary);">Lifetime</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: 14px 20px; color: var(--text-secondary);">Live NIFTY + BANKNIFTY Signals</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border); background: rgba(255,255,255,0.01);">
+                <td style="padding: 14px 20px; color: var(--text-secondary);">WhatsApp &amp; Telegram Alerts</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: 14px 20px; color: var(--text-secondary);">Basic Algo Bot Access</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border); background: rgba(255,255,255,0.01);">
+                <td style="padding: 14px 20px; color: var(--text-secondary);">Advanced Multi-Strategy Bots</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--text-muted);">—</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: 14px 20px; color: var(--text-secondary);">Backtesting Dashboard</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--text-muted);">—</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border); background: rgba(255,255,255,0.01);">
+                <td style="padding: 14px 20px; color: var(--text-secondary);">Options Strategy Builder</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--text-muted);">—</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: 14px 20px; color: var(--text-secondary);">Priority Support (2hr SLA)</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--text-muted);">—</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border); background: rgba(255,255,255,0.01);">
+                <td style="padding: 14px 20px; color: var(--text-secondary);">Custom Bot Development</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--text-muted);">—</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--text-muted);">—</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <td style="padding: 14px 20px; color: var(--text-secondary);">Dedicated Account Manager</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--text-muted);">—</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--text-muted);">—</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+              </tr>
+              <tr style="background: rgba(255,255,255,0.01);">
+                <td style="padding: 14px 20px; color: var(--text-secondary);">Lifetime Access + Future Features</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--text-muted);">—</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--text-muted);">—</td>
+                <td style="padding: 14px 20px; text-align: center; color: var(--color-success);">✓</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FAQ ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label fade-up">FAQ</div>
+          <h2 class="fade-up delay-1">Common Questions</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; margin: 0 auto;">
+          <div class="glass-card fade-up" style="padding: 24px;">
+            <h4 style="font-size: 0.95rem; margin-bottom: 8px;">Do I need coding knowledge?</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">No. Our bots are configured by our team based on your strategy preference. You just need a broker account.</p>
+          </div>
+          <div class="glass-card fade-up delay-1" style="padding: 24px;">
+            <h4 style="font-size: 0.95rem; margin-bottom: 8px;">Which brokers do you support?</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">We currently support Zerodha (Kite), Upstox, and Angel One via their official APIs.</p>
+          </div>
+          <div class="glass-card fade-up delay-2" style="padding: 24px;">
+            <h4 style="font-size: 0.95rem; margin-bottom: 8px;">Is there a refund policy?</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">Yes — all plans include a 7-day money-back guarantee. If you're unhappy, we refund in full, no questions asked.</p>
+          </div>
+          <div class="glass-card fade-up delay-3" style="padding: 24px;">
+            <h4 style="font-size: 0.95rem; margin-bottom: 8px;">Can I upgrade my plan later?</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">Absolutely. You can upgrade at any time and we'll pro-rate the remaining days on your current plan.</p>
+          </div>
+          <div class="glass-card fade-up" style="padding: 24px;">
+            <h4 style="font-size: 0.95rem; margin-bottom: 8px;">Are the signals safe for beginners?</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">Each signal includes risk levels, position sizing guidance, and stop-loss — making it accessible for beginners with basic market knowledge.</p>
+          </div>
+          <div class="glass-card fade-up delay-1" style="padding: 24px;">
+            <h4 style="font-size: 0.95rem; margin-bottom: 8px;">How are signals delivered?</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">Via WhatsApp, Telegram, and our member dashboard — all updated in real time as market conditions change.</p>
           </div>
         </div>
       </div>
-      <p class="text-center mt-4">All plans include detailed stock market insights, backtested strategies, and easy-to-use trading software.</p>
-    </div>
-  </section>
+    </section>
 
-  <footer class="bg-dark text-white text-center py-4">
+    <!-- ====== CTA ====== -->
+    <section class="section section-alt">
+      <div class="container" style="text-align: center;">
+        <div class="section-label fade-up" style="margin: 0 auto 16px;">Get Started</div>
+        <h2 style="font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 14px;" class="fade-up delay-1">Still Have Questions? <span class="gradient-text">We're Here.</span></h2>
+        <p style="color: var(--text-secondary); max-width: 440px; margin: 0 auto 32px;" class="fade-up delay-2">
+          Book a free 30-minute call with our team. We'll walk you through which plan fits your trading style and risk appetite.
+        </p>
+        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;" class="fade-up delay-3">
+          <a href="contact.html" class="btn-primary">
+            Book a Free Call
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="signals.html" class="btn-secondary">View Live Signals</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="site-footer">
     <div class="container">
-      <p class="mb-0">&copy; 2025 Daksh Algo Solutions</p>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-name"><img src="src/Logo.png" alt="Daksh Algo Logo" class="icon">Daksh Algo Solutions</div>
+          <p>India's trusted algorithmic trading partner — delivering proven, automated strategies for NSE and BSE markets since 2020.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn">𝕏</a>
+            <a href="#" class="social-btn">in</a>
+            <a href="#" class="social-btn">✈</a>
+            <a href="#" class="social-btn">▶</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Pages</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="signals.html">Live Signals</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="services.html">Algo Trading Bots</a></li>
+            <li><a href="services.html">Live Trade Signals</a></li>
+            <li><a href="services.html">Strategy Backtesting</a></li>
+            <li><a href="services.html">Options Builder</a></li>
+            <li><a href="services.html">Custom Platforms</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="mailto:mani.moneymagnet@gmail.com">mani.moneymagnet@gmail.com</a></li>
+            <li><a href="tel:+919154196999">+91-9154196999</a></li>
+            <li><a href="#">Manikonda, Hyderabad, India</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Daksh Algo Solutions. All rights reserved.</span>
+        <span>Built in Hyderabad 🇮🇳</span>
+      </div>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const nav = document.getElementById('siteNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+    // Billing toggle
+    function setFreq(freq) {
+      const btnM = document.getElementById('btnMonthly');
+      const btnA = document.getElementById('btnAnnual');
+      if (freq === 'monthly') {
+        btnM.style.background = 'var(--color-accent)'; btnM.style.color = 'var(--color-bg)';
+        btnA.style.background = 'transparent'; btnA.style.color = 'var(--text-secondary)';
+        document.querySelector('#price-monthly .price-num').textContent = '2,999';
+        document.querySelector('#price-yearly .price-num').textContent = '24,999';
+        document.querySelector('#price-lifetime .price-num').textContent = '59,999';
+        document.querySelector('#price-monthly .period').textContent = '/mo';
+        document.querySelector('#price-yearly .period').textContent = '/yr';
+      } else {
+        btnA.style.background = 'var(--color-accent)'; btnA.style.color = 'var(--color-bg)';
+        btnM.style.background = 'transparent'; btnM.style.color = 'var(--text-secondary)';
+        document.querySelector('#price-monthly .price-num').textContent = '2,099';
+        document.querySelector('#price-yearly .price-num').textContent = '17,499';
+        document.querySelector('#price-lifetime .price-num').textContent = '59,999';
+        document.querySelector('#price-monthly .period').textContent = '/mo';
+        document.querySelector('#price-yearly .period').textContent = '/yr';
+      }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>

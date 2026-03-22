@@ -1,87 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="src/Logo.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore algorithmic trading services from Daksh Algo Solutions including automated trading bots, AI-generated trade signals, and custom trading platforms.">
-  <meta name="keywords" content="algorithmic trading services, trading bots, trade signals, custom trading platforms, automated investing software">
-  <title>Algorithmic Trading Services - Daksh Algo Solutions</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="description" content="Explore algorithmic trading services from Daksh Algo Solutions — automated trading bots, AI-driven trade signals, strategy backtesting, options builders, and custom trading platforms.">
+  <meta name="keywords" content="algo trading services India, automated trading bots NSE, options strategy builder, backtesting platform, custom trading software">
+  <title>Services | Algorithmic Trading Solutions - Daksh Algo</title>
+  <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Daksh Algo Solutions</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-          <li class="nav-item"><a class="nav-link" href="signals.html">Signals</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        </ul>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">
+        <img src="src/Logo.png" alt="Daksh Algo Logo" class="brand-logo">
+        Daksh <span class="accent">Algo</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="signals.html">Signals</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="signals.html" class="btn-nav-login">Login</a>
+        <a href="contact.html" class="btn-nav-start">Get Started</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
 
-  <header class="bg-gradient text-white text-center py-5">
-    <div class="container">
-      <h1 class="display-4 fw-bold">Algorithmic Trading Services</h1>
-      <p class="lead mb-0">End-to-end solutions for modern traders.</p>
-    </div>
-  </header>
+  <div class="page-content">
 
-  <section class="py-5">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Algo Trading Bots</h5>
-              <p class="card-text">Build and deploy automated trading bots tailored for your strategies across equities, forex, and cryptocurrency markets. Our bots execute with precision and speed.</p>
-            </div>
+    <!-- ====== PAGE HERO ====== -->
+    <header class="page-hero">
+      <div class="container">
+        <div class="section-label fade-up">What We Build</div>
+        <h1 class="fade-up delay-1">Algorithmic Trading <span class="gradient-text">Services</span></h1>
+        <p class="fade-up delay-2">End-to-end automated trading solutions — designed, tested, and deployed for Indian markets by traders who understand the edge that matters.</p>
+      </div>
+    </header>
+
+    <!-- ====== SERVICES LIST ====== -->
+    <section class="section">
+      <div class="container">
+
+        <!-- Service 1 -->
+        <div class="glass-card service-detail-card fade-up" style="margin-bottom: 28px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr;">
+          <img
+            src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80"
+            alt="Algorithmic trading bot execution charts"
+            class="service-detail-img"
+          >
+          <div class="service-detail-body">
+            <div class="service-tag">🤖 Automation</div>
+            <h3>Algo Trading Bots</h3>
+            <p>
+              We design, develop, and deploy fully automated trading bots connected directly to your broker account via API. Our bots handle everything — signal detection, order placement, position management, and exit logic — without any manual intervention required from you.
+            </p>
+            <ul class="feature-list">
+              <li>Zerodha (Kite), Upstox &amp; Angel One API integrations</li>
+              <li>Intraday, swing, and options expiry strategies</li>
+              <li>Real-time P&amp;L tracking and alert notifications</li>
+              <li>Configurable risk limits per trade and per day</li>
+              <li>Co-location &amp; low-latency deployment options</li>
+            </ul>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Trade Suggestions</h5>
-              <p class="card-text">Receive AI-driven stock market signals and intraday trade ideas with clear entry, stop-loss, and target levels.</p>
-            </div>
+
+        <!-- Service 2 (reversed) -->
+        <div class="glass-card service-detail-card fade-up delay-1" style="margin-bottom: 28px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr;">
+          <div class="service-detail-body" style="order: -1;">
+            <div class="service-tag">📡 Intelligence</div>
+            <h3>Live Trade Signals</h3>
+            <p>
+              Our signal engine continuously scans NSE &amp; BSE for high-probability setups using a combination of technical indicators, volume analysis, and machine learning models. Signals are delivered with clear entry, stop-loss, and target levels so you know exactly what to do when a call comes in.
+            </p>
+            <ul class="feature-list">
+              <li>Intraday NIFTY, Bank NIFTY &amp; equity signals</li>
+              <li>Positional calls with multi-week holding periods</li>
+              <li>WhatsApp, Telegram &amp; email delivery</li>
+              <li>78%+ historical accuracy across 3 years of signals</li>
+              <li>Post-trade analysis report every week</li>
+            </ul>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1642790551116-18e150f248e3?auto=format&fit=crop&w=800&q=80"
+            alt="Live trade signal charts and analytics"
+            class="service-detail-img"
+          >
+        </div>
+
+        <!-- Service 3 -->
+        <div class="glass-card service-detail-card fade-up" style="margin-bottom: 28px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr;">
+          <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+            alt="Strategy backtesting dashboard with historical data"
+            class="service-detail-img"
+          >
+          <div class="service-detail-body">
+            <div class="service-tag">🔬 Research</div>
+            <h3>Strategy Backtesting</h3>
+            <p>
+              Before risking real money, validate your trading idea against historical market data. We provide backtesting as a service — our team runs your strategy across years of tick-level data and provides a detailed outcome report covering returns, drawdowns, Sharpe ratio, and win rate.
+            </p>
+            <ul class="feature-list">
+              <li>5+ years of NSE tick-level data available</li>
+              <li>Out-of-sample forward testing included</li>
+              <li>CAGR, max drawdown, Sharpe &amp; Calmar metrics</li>
+              <li>Walk-forward optimization to avoid curve fitting</li>
+              <li>Delivered as PDF report with scenario analysis</li>
+            </ul>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Custom Trading Applications</h5>
-              <p class="card-text">Design and development of trading dashboards, portfolio trackers, and strategy testing platforms with real-time data feeds and API integration.</p>
-            </div>
+
+        <!-- Service 4 (reversed) -->
+        <div class="glass-card service-detail-card fade-up delay-1" style="margin-bottom: 28px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr;">
+          <div class="service-detail-body" style="order: -1;">
+            <div class="service-tag">⚡ Derivatives</div>
+            <h3>Options Strategy Builder</h3>
+            <p>
+              Build, test, and automate complex options strategies without writing a single line of code. Our visual strategy builder supports covered calls, cash-secured puts, iron condors, calendar spreads, and custom multi-leg structures — fully integrated with broker APIs for live execution.
+            </p>
+            <ul class="feature-list">
+              <li>Visual drag-and-drop strategy construction</li>
+              <li>Real-time Greeks (Delta, Theta, Vega) monitoring</li>
+              <li>Auto-adjust on breach of Greeks thresholds</li>
+              <li>Weekly expiry and monthly expiry optimization</li>
+              <li>Historical P&amp;L simulation before going live</li>
+            </ul>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80"
+            alt="Options strategy builder dashboard"
+            class="service-detail-img"
+          >
+        </div>
+
+        <!-- Service 5 -->
+        <div class="glass-card service-detail-card fade-up" style="margin-bottom: 28px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr;">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+            alt="Custom trading dashboard development"
+            class="service-detail-img"
+          >
+          <div class="service-detail-body">
+            <div class="service-tag">🖥️ Development</div>
+            <h3>Custom Trading Platforms</h3>
+            <p>
+              Every trader's workflow is different. We build bespoke trading dashboards, portfolio trackers, screeners, and execution platforms tailored exactly to how you trade — from single-page apps connecting to your broker to full-stack multi-user SaaS products.
+            </p>
+            <ul class="feature-list">
+              <li>Real-time market data feeds (NSE official &amp; third-party)</li>
+              <li>Custom charts, screeners &amp; watchlists</li>
+              <li>Multi-broker account aggregation</li>
+              <li>Mobile-responsive web apps + downloadable executables</li>
+              <li>Ongoing maintenance &amp; feature development</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 6 (reversed) -->
+        <div class="glass-card service-detail-card fade-up delay-1" style="overflow: hidden; display: grid; grid-template-columns: 1fr 1fr;">
+          <div class="service-detail-body" style="order: -1;">
+            <div class="service-tag">🛡️ Protection</div>
+            <h3>Risk Management Tools</h3>
+            <p>
+              Protecting your capital matters more than any individual trade. Our risk management layer can be added to any existing setup — monitoring your live portfolio, flagging breaches, auto-squaring positions when thresholds are hit, and generating end-of-day risk reports.
+            </p>
+            <ul class="feature-list">
+              <li>Real-time portfolio exposure monitoring</li>
+              <li>Maximum daily loss auto-cutoff (kill switch)</li>
+              <li>Position concentration &amp; sector diversification alerts</li>
+              <li>Correlation matrix &amp; beta-weighted delta tracking</li>
+              <li>Daily risk summary reports via email</li>
+            </ul>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80"
+            alt="Risk management tools and portfolio monitoring"
+            class="service-detail-img"
+          >
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====== PROCESS ====== -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label fade-up">How It Works</div>
+          <h2 class="fade-up delay-1">Our Delivery Process</h2>
+          <p class="fade-up delay-2">From first conversation to live deployment in as little as two weeks for most projects.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--color-border); border-radius: var(--radius-lg); overflow: hidden;">
+          <div style="background: var(--color-surface-2); padding: 32px 24px; text-align: center;" class="fade-up">
+            <div style="font-size: 2rem; margin-bottom: 12px;">💬</div>
+            <div style="font-size: 0.7rem; color: var(--color-accent); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">Step 01</div>
+            <div style="font-size: 0.95rem; font-weight: 600; margin-bottom: 8px;">Discovery Call</div>
+            <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">We understand your trading style, goals, and current setup in a free 30-minute consultation.</div>
+          </div>
+          <div style="background: var(--color-surface-2); padding: 32px 24px; text-align: center;" class="fade-up delay-1">
+            <div style="font-size: 2rem; margin-bottom: 12px;">📋</div>
+            <div style="font-size: 0.7rem; color: var(--color-accent); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">Step 02</div>
+            <div style="font-size: 0.95rem; font-weight: 600; margin-bottom: 8px;">Strategy Design</div>
+            <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">Our quant team designs the strategy logic, defines rules, and creates a detailed specification.</div>
+          </div>
+          <div style="background: var(--color-surface-2); padding: 32px 24px; text-align: center;" class="fade-up delay-2">
+            <div style="font-size: 2rem; margin-bottom: 12px;">🔬</div>
+            <div style="font-size: 0.7rem; color: var(--color-accent); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">Step 03</div>
+            <div style="font-size: 0.95rem; font-weight: 600; margin-bottom: 8px;">Backtesting &amp; QA</div>
+            <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">We test rigorously on historical data and run paper trades in live market conditions.</div>
+          </div>
+          <div style="background: var(--color-surface-2); padding: 32px 24px; text-align: center;" class="fade-up delay-3">
+            <div style="font-size: 2rem; margin-bottom: 12px;">🚀</div>
+            <div style="font-size: 0.7rem; color: var(--color-accent); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">Step 04</div>
+            <div style="font-size: 0.95rem; font-weight: 600; margin-bottom: 8px;">Live Deployment</div>
+            <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">We deploy with small capital first, monitor closely, then scale once performance meets expectations.</div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="py-5 bg-light">
-    <div class="container text-center">
-      <p class="mb-0">Contact us to discuss bespoke algorithmic trading solutions that fit your investing goals.</p>
-    </div>
-  </section>
+    <!-- ====== CTA ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="glass-card" style="padding: 60px 48px; text-align: center; background: linear-gradient(145deg, rgba(0,212,170,0.06), rgba(59,130,246,0.04)); border-color: rgba(0,212,170,0.2);">
+          <div class="section-label fade-up" style="margin: 0 auto 16px;">Let's Build Together</div>
+          <h2 style="font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 14px;" class="fade-up delay-1">Have a Trading Idea? <span class="gradient-text">Let's Make It Real.</span></h2>
+          <p style="color: var(--text-secondary); max-width: 480px; margin: 0 auto 32px;" class="fade-up delay-2">
+            Tell us what you want to trade and we'll design a custom algorithmic solution. Free initial consultation, always.
+          </p>
+          <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;" class="fade-up delay-3">
+            <a href="contact.html" class="btn-primary">
+              Book a Free Consultation
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="pricing.html" class="btn-secondary">View Pricing</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <footer class="bg-dark text-white text-center py-4">
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="site-footer">
     <div class="container">
-      <p class="mb-0">&copy; 2025 Daksh Algo Solutions</p>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-name"><img src="src/Logo.png" alt="Daksh Algo Logo" class="icon">Daksh Algo Solutions</div>
+          <p>India's trusted algorithmic trading partner — delivering proven, automated strategies for NSE and BSE markets since 2020.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn">𝕏</a>
+            <a href="#" class="social-btn">in</a>
+            <a href="#" class="social-btn">✈</a>
+            <a href="#" class="social-btn">▶</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Pages</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="signals.html">Live Signals</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="services.html">Algo Trading Bots</a></li>
+            <li><a href="services.html">Live Trade Signals</a></li>
+            <li><a href="services.html">Strategy Backtesting</a></li>
+            <li><a href="services.html">Options Builder</a></li>
+            <li><a href="services.html">Custom Platforms</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="mailto:mani.moneymagnet@gmail.com">mani.moneymagnet@gmail.com</a></li>
+            <li><a href="tel:+919154196999">+91-9154196999</a></li>
+            <li><a href="#">Manikonda, Hyderabad, India</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Daksh Algo Solutions. All rights reserved.</span>
+        <span>Built in Hyderabad 🇮🇳</span>
+      </div>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const nav = document.getElementById('siteNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
